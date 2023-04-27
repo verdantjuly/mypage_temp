@@ -88,9 +88,11 @@
     </style>
     <script>
         $(document).ready(function () {
-            fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
-                let result = data['temp']
-                $('#temp').text(result)
+            fetch("https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=a5b84ee7e44bdf29e24ed77605d8f694").then(res => res.json()).then(data => {
+                let result = data['main']['temp']
+                $('#temp').text(Math.floor(result - 273.15)) 
+                // 화씨 - K = 섭씨
+                // Math.floor()를 이용해 소수점 너무 길어서 버림
             })
         })
     </script>
